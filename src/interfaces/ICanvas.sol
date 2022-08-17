@@ -16,4 +16,6 @@ interface ICanvas {
     function getPixel(uint256 x, uint256 y) external view returns (uint256);
 
     function setPixel(uint256 x, uint256 y, uint256 color) external;
+
+    function drawLine(uint256 x0, uint256 y0, uint256 x1, uint256 y1, uint256 color) external;
 }

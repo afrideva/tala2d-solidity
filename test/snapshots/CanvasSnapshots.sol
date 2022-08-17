@@ -7,7 +7,7 @@ import "../../src/interfaces/ICanvas.sol";
 contract CanvasSnapshots is Test {
     uint256[3][3] testDrawLineSnap = [
         [uint256(1), 0, 0],
-        [uint256(0), 1, 2],
+        [uint256(0), 1, 0],
         [uint256(0), 0, 1]
     ];
     uint256 public width = 3;

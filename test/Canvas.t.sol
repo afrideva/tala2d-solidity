@@ -3,11 +3,13 @@ pragma solidity ^0.8.15;
 
 import {Test} from "forge-std/Test.sol";
 import "../src/Canvas.sol";
+import "./snapshots/CanvasSnapshots.sol";
 
-contract CanvasTest is Test {
+contract CanvasTest is CanvasSnapshots {
+    /* contract CanvasTest is Test { */
     ICanvas private canvas;
-    uint256 width = 16;
-    uint256 height = 16;
+    /* uint256 width = 16; */
+    /* uint256 height = 16; */
     uint256 initColor = 0;
 
     function setUp() public {
@@ -38,5 +40,13 @@ contract CanvasTest is Test {
         assertEq(canvas.getPixel(0, 0), 0);
         canvas.setPixel(0, 0, color);
         assertEq(canvas.getPixel(0, 0), color);
+    }
+
+    /* Rasterizer */
+
+    function testDrawLine() public {
+        canvas.drawLine(0, 0, width - 1, height - 1, 1);
+        assertEqPixels(canvas, testDrawLineSnap);
+        /* assertEq(ctx.getPixel(0, 0), 1); */
     }
 }
