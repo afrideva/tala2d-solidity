@@ -7,4 +7,5 @@
  - setPixel
  - fill
 
- 
+ - drawLine
+ - drawCircle

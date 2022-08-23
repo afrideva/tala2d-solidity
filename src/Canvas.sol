@@ -74,4 +74,27 @@ contract Canvas is ICanvas {
             }
         }
     }
+
+    function drawCircle(
+        uint256 uxm,
+        uint256 uym,
+        uint256 ur,
+        uint256 color
+    ) public {
+        int xm = int(uxm);
+        int ym = int(uym);
+        int r = int(ur);
+        int256 x = -r;
+        int256 y = 0;
+        int256 err = 2 - 2 * r; /* II. Quadrant */
+        do {
+            setPixel(uint(xm - x), uint(ym + y), color); /*   I. Quadrant */
+            setPixel(uint(xm - y), uint(ym - x), color); /*  II. Quadrant */
+            setPixel(uint(xm + x), uint(ym - y), color); /* III. Quadrant */
+            setPixel(uint(xm + y), uint(ym + x), color); /*  IV. Quadrant */
+            r = err;
+            if (r <= y) err += ++y * 2 + 1; /* e_xy+e_y < 0 */
+            if (r > x || err > y) err += ++x * 2 + 1; /* e_xy+e_x > 0 or no 2nd y-step */
+        } while (x < 0);
+    }
 }
