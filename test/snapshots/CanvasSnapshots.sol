@@ -10,6 +10,11 @@ contract CanvasSnapshots is Test {
         [uint256(0), 1, 0],
         [uint256(0), 0, 1]
     ];
+    uint256[3][3] testDrawCircleSnap = [
+        [uint256(0), 1, 0],
+        [uint256(1), 0, 1],
+        [uint256(0), 1, 0]
+    ];
     uint256 public width = 3;
     uint256 public height = 3;
 

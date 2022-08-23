@@ -43,10 +43,12 @@ contract CanvasTest is CanvasSnapshots {
     }
 
     /* Rasterizer */
-
     function testDrawLine() public {
         canvas.drawLine(0, 0, width - 1, height - 1, 1);
         assertEqPixels(canvas, testDrawLineSnap);
-        /* assertEq(ctx.getPixel(0, 0), 1); */
+    }
+    function testCircle() public {
+        canvas.drawCircle(width / 2, height / 2,width/2, 1);
+        assertEqPixels(canvas, testDrawCircleSnap);
     }
 }
